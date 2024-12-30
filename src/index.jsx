@@ -52,7 +52,7 @@ function App() {
         <div className="container">
             <Header />
             <Menu />
-            <Footer/>
+            <Footer />
         </div>
     );
 }
@@ -95,48 +95,49 @@ function Menu() {
 }
 
 function Pizza({ pizzaObj }) {
-  return (
-    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
-      <img src={pizzaObj.photoName} alt="{pizzaObj.name}" />
-      <div>
-        <h3>{pizzaObj.name}</h3>
-        <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
-      </div>
-    </li>
-  );
-   
+    return (
+        <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+            <img src={pizzaObj.photoName} alt="{pizzaObj.name}" />
+            <div>
+                <h3>{pizzaObj.name}</h3>
+                <p>{pizzaObj.ingredients}</p>
+                <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
+            </div>
+        </li>
+    );
 }
 
-
-function Footer () {
+function Footer() {
     const hour = new Date().getHours();
     const openHour = 2;
     const closeHour = 22;
-    const isOpen = hour >= openHour && hour <= closeHour
-
+    const isOpen = hour >= openHour && hour <= closeHour;
 
     return (
         <footer className="footer">
             {isOpen ? (
-                <Order closeHour={ closeHour} openHour={openHour} />
-            ) : (<p>We are Closed, We are happy to welcome you between {openHour}:00 and {closeHour}:00 </p>)}
+                <Order closeHour={closeHour} openHour={openHour} />
+            ) : (
+                <p>
+                    We are Closed, We are happy to welcome you between{" "}
+                    {openHour}:00 and {closeHour}:00{" "}
+                </p>
+            )}
         </footer>
-    )
+    );
 }
-
 
 function Order({ openHour, closeHour }) {
     return (
         <div className="order">
-            <p>We are open from {openHour}:00 to {closeHour}:00. Come visit us or order online.</p>
+            <p>
+                We are open from {openHour}:00 to {closeHour}:00. Come visit us
+                or order online.
+            </p>
             <button className="btn">Order</button>
         </div>
-    )
+    );
 }
-
-
-
 
 const rootEntry = ReactDom.createRoot(document.getElementById("root"));
 rootEntry.render(
